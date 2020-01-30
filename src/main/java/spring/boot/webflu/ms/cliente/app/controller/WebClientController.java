@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.reactive.function.client.WebClient;
 import reactor.core.publisher.Flux;
-import spring.boot.webflu.ms.cliente.app.dto.CurrentAccount;
+import spring.boot.webflu.ms.cliente.app.dto.CuentaBanco;
 
 @RestController
 @RequestMapping("/api/Clientes")
@@ -27,9 +27,9 @@ public class WebClientController {
 
 	//proyecto 3
    @GetMapping("/ProductoBancario/{dniCliente}")
-   public Flux<CurrentAccount> getFamilyList(@PathVariable String dniCliente) 
+   public Flux<CuentaBanco> getFamilyList(@PathVariable String dniCliente) 
    { 
-		return webClient.get().uri("/dni/"+dniCliente).retrieve().bodyToFlux(CurrentAccount.class); 
+		return webClient.get().uri("/dni/"+dniCliente).retrieve().bodyToFlux(CuentaBanco.class); 
    }
   
 

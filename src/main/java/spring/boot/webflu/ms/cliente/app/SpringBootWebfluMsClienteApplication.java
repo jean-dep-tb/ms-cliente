@@ -11,10 +11,9 @@ import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
 import reactor.core.publisher.Flux;
 import spring.boot.webflu.ms.cliente.app.documents.Client;
-import spring.boot.webflu.ms.cliente.app.documents.TipoCuenta;
-import spring.boot.webflu.ms.cliente.app.documents.TypeClient;
+import spring.boot.webflu.ms.cliente.app.documents.TipoCuentaClient;
 import spring.boot.webflu.ms.cliente.app.service.ClienteService;
-import spring.boot.webflu.ms.cliente.app.service.TipoClienteService;
+import spring.boot.webflu.ms.cliente.app.service.TipoCuentaClienteService;
 
 @EnableEurekaClient
 @SpringBootApplication
@@ -24,7 +23,7 @@ public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 	private ClienteService serviceCliente;
 	
 	@Autowired
-	private TipoClienteService serviceTipoCliente;
+	private TipoCuentaClienteService serviceTipoCliente;
 	
 	@Autowired
 	private ReactiveMongoTemplate mongoTemplate;
@@ -41,11 +40,11 @@ public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 		mongoTemplate.dropCollection("Clientes").subscribe();
 		mongoTemplate.dropCollection("TipoCliente").subscribe();
 		
-		TypeClient personal = new TypeClient("1","personal");
-		TypeClient empresa = new TypeClient("2","empresa");
-		TypeClient vip = new TypeClient("3","vip");
-		TypeClient pyme = new TypeClient("4","pyme");
-		TypeClient corporativo = new TypeClient("5","corporativo");
+		TipoCuentaClient personal = new TipoCuentaClient("1","personal");
+		TipoCuentaClient empresa = new TipoCuentaClient("2","empresa");
+		TipoCuentaClient vip = new TipoCuentaClient("3","vip");
+		TipoCuentaClient pyme = new TipoCuentaClient("4","pyme");
+		TipoCuentaClient corporativo = new TipoCuentaClient("5","corporativo");
 		//
 		Flux.just(personal,empresa,vip,pyme,corporativo)
 		.flatMap(serviceTipoCliente::saveTipoCliente)
@@ -53,11 +52,11 @@ public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 			log.info("Tipo cliente creado: " +  c.getDescripcion() + ", Id: " + c.getIdTipo());
 		}).thenMany(					
 				Flux.just(
-						new Client("07091424","JUAN CARLOS",personal),
-						new Client("47305710","ESMERALDA CORP",empresa),
-						new Client("12345678","EVERIS SAC",vip),
-						new Client("87654321","LUIS MIGUEL",pyme),
-						new Client("23456789","CIVA",corporativo)
+						new Client("47305711","JUAN CARLOS",personal,"BCP"),
+						new Client("47305710","ESMERALDA CORP",empresa,"BBVA"),
+						new Client("12345678","EVERIS SAC",vip,"BBVA"),
+						new Client("87654321","LUIS MIGUEL",pyme,"BCP"),
+						new Client("23456789","CIVA",corporativo,"XXX")
 
 						)					
 					.flatMap(client -> {

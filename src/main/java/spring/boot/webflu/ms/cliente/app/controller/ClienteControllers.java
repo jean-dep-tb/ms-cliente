@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.RestController;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import spring.boot.webflu.ms.cliente.app.documents.Client;
-import spring.boot.webflu.ms.cliente.app.documents.TypeClient;
+import spring.boot.webflu.ms.cliente.app.documents.TipoCuentaClient;
 import spring.boot.webflu.ms.cliente.app.service.ClienteService;
-import spring.boot.webflu.ms.cliente.app.service.TipoClienteService;
+import spring.boot.webflu.ms.cliente.app.service.TipoCuentaClienteService;
 
 
 
@@ -29,7 +29,7 @@ public class ClienteControllers {
 	private ClienteService clientService;
 
 	@Autowired
-	private TipoClienteService tipoClienteService;
+	private TipoCuentaClienteService tipoClienteService;
 
 	//LISTA TODOS LOS CLIENTES
 	@GetMapping
@@ -74,11 +74,11 @@ public class ClienteControllers {
 		
 		System.out.println(cli.getTipoCliente().getIdTipo());
 
-		Mono<TypeClient> tipo = this.tipoClienteService.findByIdTipoCliente(cli.getTipoCliente().getIdTipo());
+		Mono<TipoCuentaClient> tipo = this.tipoClienteService.findByIdTipoCliente(cli.getTipoCliente().getIdTipo());
 		
 		System.out.println("Tipo de cliente ---> " + tipo.toString());
 		
-		return tipo.defaultIfEmpty(new TypeClient()).flatMap(c -> {
+		return tipo.defaultIfEmpty(new TipoCuentaClient()).flatMap(c -> {
 			if (c.getIdTipo() == null) {
 				return Mono.error(new InterruptedException("NO EXISTE EL TIPO DE CUENTA"));
 			}

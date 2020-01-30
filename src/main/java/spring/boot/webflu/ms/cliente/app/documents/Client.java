@@ -31,13 +31,16 @@ public class Client {
 	@NotEmpty
 	private String correo;
 	@NotEmpty
-	private TypeClient tipoCliente;
+	private TipoCuentaClient tipoCliente;	
+	@NotEmpty
+	private String codigoBanco;
 	
 	public Client(String dni,String nombres,
-			TypeClient tipoCliente) {
+			TipoCuentaClient tipoCliente,String codigoBanco) {
 		this.dni = dni;
 		this.nombres = nombres;
 		this.tipoCliente = tipoCliente;
+		this.codigoBanco = codigoBanco;
 	}
 
 	public Client() {
