@@ -60,7 +60,7 @@ public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 
 						)					
 					.flatMap(client -> {
-						return serviceCliente.saveClientePersonal(client);
+						return serviceCliente.saveCliente(client);
 					})					
 				).subscribe(client -> log.info("Insert: " + client.getId() + " " + client.getNombres()));
 		

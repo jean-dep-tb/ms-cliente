@@ -18,27 +18,27 @@ public class ClienteServiceImpl implements ClienteService {
 	public ClienteDao clienteDao;
 	
 	@Override
-	public Flux<Client> findAllClientePersonal()
+	public Flux<Client> findAllCliente()
 	{
-	return clienteDao.findAll();
+		return clienteDao.findAll();
 	
 	}
 	@Override
-	public Mono<Client> findByIdClientePersonal(String id)
+	public Mono<Client> findByIdCliente(String id)
 	{
-	return clienteDao.findById(id);
+		return clienteDao.findById(id);
 	
 	}
 	
 	@Override
 	public Mono<Client> viewDniCliente(String dni)
 	{
-	return clienteDao.viewDniCliente(dni);
+		return clienteDao.viewDniCliente(dni);
 	
 	}
 	
 	@Override
-	public Mono<Client> saveClientePersonal(Client clientePersonal)
+	public Mono<Client> saveCliente(Client clientePersonal)
 	{
 		return clienteDao.save(clientePersonal);
 	}

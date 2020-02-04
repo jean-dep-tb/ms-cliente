@@ -17,17 +17,17 @@ public class Client {
 	@NotEmpty
 	private String id;
 	@NotEmpty
-	private String dni; //numero de documento
+	private String numdoc; //numero de documento - dni
 	@NotEmpty
-	private String nombres; //razon social
-	@NotEmpty
-	private String apellidos;
-	@NotEmpty
-	private String sexo;
-	@NotEmpty
+	private String nombres; //razon social - descripcion
+//	@NotEmpty
+//	private String apellidos;
+//	@NotEmpty
+//	private String sexo;
+//	@NotEmpty
 	private String telefono;
-	@NotEmpty
-	private String edad;
+//	@NotEmpty
+//	private String edad;
 	@NotEmpty
 	private String correo;
 	@NotEmpty
@@ -35,9 +35,9 @@ public class Client {
 	@NotEmpty
 	private String codigoBanco;
 	
-	public Client(String dni,String nombres,
+	public Client(String numdoc,String nombres,
 			TipoCuentaClient tipoCliente,String codigoBanco) {
-		this.dni = dni;
+		this.numdoc = numdoc;
 		this.nombres = nombres;
 		this.tipoCliente = tipoCliente;
 		this.codigoBanco = codigoBanco;

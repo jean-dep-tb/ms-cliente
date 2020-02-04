@@ -7,11 +7,10 @@ import spring.boot.webflu.ms.cliente.app.documents.Client;
 
 public interface ClienteService {
 
-	Flux<Client> findAllClientePersonal();
-	Mono<Client> findByIdClientePersonal(String id);
-	Mono<Client> saveClientePersonal(Client clientePersonal);
+	Flux<Client> findAllCliente();
+	Mono<Client> findByIdCliente(String id);
+	Mono<Client> saveCliente(Client clientePersonal);
 	Mono<Void> deleteCliente(Client cliente);
-	
 	Mono<Client> viewDniCliente(String dni);
 	
 }
