@@ -68,7 +68,7 @@ public class ClienteControllers {
 		return clientService.saveCliente(cliente);
 	}
 	
-	@ApiOperation(value = "GUARDA CLIENTE VALIDANDO SI EL [TIPO CUENTA CLIENTE] EXISTE ", notes="")
+	@ApiOperation(value = "GUARDA CLIENTE VALIDANDO EL TIPO CLIENTE ", notes="")
 	@PostMapping
 	public Mono<Client> guardarCliente(@RequestBody Client cli) {
 		
@@ -80,7 +80,7 @@ public class ClienteControllers {
 		
 		return tipo.defaultIfEmpty(new TipoCuentaClient()).flatMap(c -> {
 			if (c.getIdTipo() == null) {
-				return Mono.error(new InterruptedException("NO EXISTE EL TIPO DE CUENTA"));
+				return Mono.error(new InterruptedException("NO EXISTE EL TIPO DE CUENTA CLIENTE"));
 			}
 			return Mono.just(c);
 		}).flatMap(t -> {
