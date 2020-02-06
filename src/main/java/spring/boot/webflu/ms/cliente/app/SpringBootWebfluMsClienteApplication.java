@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
@@ -15,6 +16,7 @@ import spring.boot.webflu.ms.cliente.app.documents.TipoCuentaClient;
 import spring.boot.webflu.ms.cliente.app.service.ClienteService;
 import spring.boot.webflu.ms.cliente.app.service.TipoCuentaClienteService;
 
+@EnableCircuitBreaker
 @EnableEurekaClient
 @SpringBootApplication
 public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
@@ -52,8 +54,8 @@ public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 			log.info("Tipo cliente creado: " +  c.getDescripcion() + ", Id: " + c.getIdTipo());
 		}).thenMany(					
 				Flux.just(
-						new Client("47305711","JUAN CARLOS",personal,"BCP"),
-						new Client("47305710","ESMERALDA CORP",empresa,"BBVA"),
+						new Client("47305711","JUAN CARLOS",personal,"bcp"),
+						new Client("47305710","ESMERALDA CORP",empresa,"bcp"),
 						new Client("12345678","EVERIS SAC",vip,"BBVA"),
 						new Client("87654321","LUIS MIGUEL",pyme,"BCP"),
 						new Client("23456789","CIVA",corporativo,"XXX")

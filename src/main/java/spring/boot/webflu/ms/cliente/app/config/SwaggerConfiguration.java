@@ -14,7 +14,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2WebFlux;
 	    public Docket createRestApi() {
 	    	return new Docket(DocumentationType.SWAGGER_2)
 					.select()
-					.apis(RequestHandlerSelectors.any())
+					.apis(RequestHandlerSelectors.basePackage("spring.boot.webflu.ms.cliente.app.controller"))
 					.paths(PathSelectors.any())
 					.build();
 	    }

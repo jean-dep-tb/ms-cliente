@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import io.swagger.annotations.ApiOperation;
 import reactor.core.publisher.Flux;
 import reactor.core.publisher.Mono;
 import spring.boot.webflu.ms.cliente.app.documents.Client;
@@ -31,7 +33,7 @@ public class ClienteControllers {
 	@Autowired
 	private TipoCuentaClienteService tipoClienteService;
 
-	//LISTA TODOS LOS CLIENTES
+	@ApiOperation(value = "LISTA TODOS LOS CLIENTES", notes="")
 	@GetMapping
 	public Mono<ResponseEntity<Flux<Client>>> findAll() {
 		return Mono.just(ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
@@ -40,7 +42,7 @@ public class ClienteControllers {
 		);
 	}
 
-	//LISTA CLIENTE POR ID
+	@ApiOperation(value = "LISTA CLIENTES POR ID", notes="")
 	@GetMapping("/{id}")
 	public Mono<ResponseEntity<Client>> viewId(@PathVariable String id) {
 		return clientService.findByIdCliente(id)
@@ -48,7 +50,7 @@ public class ClienteControllers {
 				.defaultIfEmpty(ResponseEntity.notFound().build());
 	}
 	
-	//LISTA CLIENTE POR DOCUMENTO
+	@ApiOperation(value = "LISTA CLIENTE POR DOCUMENTO", notes="")
 	@GetMapping("/dni/{dni}")
 	public Mono<ResponseEntity<Client>> listarCLienteDni(@PathVariable String dni) {
 		
@@ -59,14 +61,14 @@ public class ClienteControllers {
 				.defaultIfEmpty(ResponseEntity.notFound().build());		
 	}
 
-	//ACTUALIZA CLIENTE POR ID 
+	@ApiOperation(value = "ACTUALIZA CLIENTE POR ID ", notes="")
 	@PutMapping
 	public Mono<Client> updateCliente(@RequestBody Client cliente) {
 		System.out.println(cliente.toString());
 		return clientService.saveCliente(cliente);
 	}
 	
-	//GUARDA CLIENTE VALIDANDO SI EL [TIPO CLIENTE] EXISTE
+	@ApiOperation(value = "GUARDA CLIENTE VALIDANDO SI EL [TIPO CUENTA CLIENTE] EXISTE ", notes="")
 	@PostMapping
 	public Mono<Client> guardarCliente(@RequestBody Client cli) {
 		
@@ -87,7 +89,7 @@ public class ClienteControllers {
 		});
 	}
 
-	//ELIMINA CLIENTE POR ID
+	@ApiOperation(value = "ELIMINA CLIENTE POR ID", notes="")
 	@DeleteMapping("/{id}")
 	public Mono<ResponseEntity<Void>> delete(@PathVariable String id) {
 		return clientService.findByIdCliente(id)
