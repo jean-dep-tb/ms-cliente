@@ -6,8 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
-import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
+//import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
+//import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
 import org.springframework.data.mongodb.core.ReactiveMongoTemplate;
 
 import reactor.core.publisher.Flux;
@@ -16,8 +17,8 @@ import spring.boot.webflu.ms.cliente.app.documents.TipoCuentaClient;
 import spring.boot.webflu.ms.cliente.app.service.ClienteService;
 import spring.boot.webflu.ms.cliente.app.service.TipoCuentaClienteService;
 
-@EnableCircuitBreaker
-@EnableEurekaClient
+//@EnableCircuitBreaker
+//@EnableEurekaClient
 @SpringBootApplication
 public class SpringBootWebfluMsClienteApplication implements CommandLineRunner{
 	

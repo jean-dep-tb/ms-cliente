@@ -17,7 +17,6 @@ import spring.boot.webflu.ms.cliente.app.documents.TipoCuentaClient;
 import spring.boot.webflu.ms.cliente.app.service.TipoCuentaClienteService;
 
 @RequestMapping("/api/TipoCliente")
-@RestController
 public class TipoCuentaClienteControllers {
 
 	

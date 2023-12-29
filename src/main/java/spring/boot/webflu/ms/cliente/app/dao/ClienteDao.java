@@ -11,7 +11,7 @@ import spring.boot.webflu.ms.cliente.app.documents.Client;
 public interface ClienteDao extends ReactiveMongoRepository<Client, String> {
 
 	//buscar el cliente por dni
-	@Query("{ 'numdoc' : ?0}")
+	@Query("{'numdoc' : ?0}")
 	Mono<Client> viewDniCliente(String dni);
 	
 	

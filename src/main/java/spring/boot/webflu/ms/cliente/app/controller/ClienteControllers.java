@@ -36,6 +36,7 @@ public class ClienteControllers {
 	@ApiOperation(value = "LISTA TODOS LOS CLIENTES", notes="")
 	@GetMapping
 	public Mono<ResponseEntity<Flux<Client>>> findAll() {
+		System.out.println("listar clientes");
 		return Mono.just(ResponseEntity.ok().contentType(MediaType.APPLICATION_JSON)
 				.body(clientService.findAllCliente())
 
@@ -53,7 +54,7 @@ public class ClienteControllers {
 	@ApiOperation(value = "LISTA CLIENTE POR DOCUMENTO", notes="")
 	@GetMapping("/dni/{dni}")
 	public Mono<ResponseEntity<Client>> listarCLienteDni(@PathVariable String dni) {
-		
+		System.out.println("listarClienteDNI"+dni);
 		return clientService.viewDniCliente(dni)
 				.map(p -> ResponseEntity
 						.ok()
@@ -92,6 +93,7 @@ public class ClienteControllers {
 	@ApiOperation(value = "ELIMINA CLIENTE POR ID", notes="")
 	@DeleteMapping("/{id}")
 	public Mono<ResponseEntity<Void>> delete(@PathVariable String id) {
+		System.out.println("eliminar clientes");
 		return clientService.findByIdCliente(id)
 				.flatMap(s -> {
 			return clientService.deleteCliente(s).then(Mono.just(new ResponseEntity<Void>(HttpStatus.NO_CONTENT)));
